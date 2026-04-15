@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { useUser } from "../features/authentication/useUser";
+import useLogout from "../features/authentication/useLogout";
 import { useLevels } from "../features/levels/useLevels";
 
 const Aside = styled.aside`
@@ -295,6 +296,7 @@ const DotsBtn = styled.button`
 
 export default function Sidebar() {
   const { user } = useUser();
+  const { logout, isLoading: isLoggingOut } = useLogout();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { levels } = useLevels();
@@ -437,7 +439,14 @@ export default function Sidebar() {
               Profile
             </MenuItem>
             <Divider />
-            <MenuItem $danger onClick={() => setMenuOpen(false)}>
+            <MenuItem
+              $danger
+              disabled={isLoggingOut}
+              onClick={() => {
+                logout();
+                setMenuOpen(false);
+              }}
+            >
               <svg
                 width="16"
                 height="16"
