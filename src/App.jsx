@@ -12,6 +12,7 @@ import Level from "./pages/Level";
 import Quiz from "./pages/Quiz";
 import Shadowing from "./pages/Shadowing";
 import Certificate from "./pages/Certificate";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,6 +43,7 @@ function App() {
               <Route path="levels/:levelId/quiz" element={<Quiz />} />
               <Route path="shadowing" element={<Shadowing />} />
               <Route path="certificate" element={<Certificate />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
           </Routes>
         </BrowserRouter>
