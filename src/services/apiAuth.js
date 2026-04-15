@@ -14,3 +14,7 @@ export const getCurrentUser = async (credientials) => {
   const response = await axiosInstance.get("/users/me", credientials);
   return response.data.data.user;
 };
+
+export const logout = async (credientials) => {
+  await axiosInstance.get("/users/logout", credientials);
+};
